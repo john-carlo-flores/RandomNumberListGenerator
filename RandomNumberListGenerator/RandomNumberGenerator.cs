@@ -12,20 +12,22 @@ namespace RandomNumberListGenerator
             this.algorithm = algorithm;
         }
 
+        /// <summary>
+        /// Generates a list of integers based on provided minRange and maxRange inclusive
+        /// </summary>
+        /// <param name="minRange">minimum number</param>
+        /// <param name="maxRange">maximum number</param>
+        /// <returns>List of numbers from min to max in randomized order</returns>
         public IEnumerable<int> GenerateRandomList(int minRange = 1, int maxRange = 10000)
         {
-            // Check for invalid range 
             if (maxRange < minRange)
                 throw new ArgumentOutOfRangeException("Provided minRange cannot be greater than maxRange");
 
-            // Create numbers list
-            var numbers = new int[maxRange - minRange + 1];
+            var numbers = new List<int>();
 
-            // Populate with numbers between minRange and maxRange
             for (var i = 0; i < maxRange; i++)
-                numbers[i] = i + minRange;
+                numbers.Add(i + minRange);
 
-            // Shuffle based on injected algorithm
             algorithm.Shuffle(numbers);
 
             return numbers;

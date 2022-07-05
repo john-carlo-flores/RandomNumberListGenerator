@@ -8,6 +8,6 @@ namespace RandomNumberListGenerator.Algorithms
 {
     public interface IShuffleAlgorithm<T>
     {
-        void Shuffle(T[] array);
+        void Shuffle(List<T> array);
     }
 }

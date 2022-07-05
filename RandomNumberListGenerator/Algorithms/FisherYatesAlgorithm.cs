@@ -8,24 +8,25 @@ namespace RandomNumberListGenerator.Algorithms
 {
     public class FisherYatesAlgorithm<T> : IShuffleAlgorithm<T>
     {
-        // Shuffle Algorithm based on Fisher-Yates
-        /* Sources: https://en.wikipedia.org/wiki/Fisher–Yates_shuffle
-         *          https://stackoverflow.com/questions/108819/best-way-to-randomize-an-array-with-net
-         */
-        public void Shuffle(T[] array)
+        /// <summary>
+        /// Modified Shuffle Algorithm based on Fisher-Yates
+        /// </summary>
+        /// <param name="list">list of elements to shuffle</param>
+        /// <seealso>Sources: https://stackoverflow.com/questions/108819/best-way-to-randomize-an-array-with-net</seealso>
+        public void Shuffle(List<T> list)
         {
-            if (array == null)
+            if (list == null)
                 throw new ArgumentNullException("array");
 
             var rng = new Random();
 
-            int n = array.Length;
+            int n = list.Count;
             while (n > 1)
             {
                 int k = rng.Next(n--);
-                T temp = array[n];
-                array[n] = array[k];
-                array[k] = temp;
+                T temp = list[n];
+                list[n] = list[k];
+                list[k] = temp;
             }
         }
     }

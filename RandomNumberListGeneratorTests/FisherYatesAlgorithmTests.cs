@@ -22,7 +22,7 @@ namespace RandomNumberListGenerator.UnitTests
         [Test]
         public void Shuffle_NullArrayProvided_ThrowsArgumentNullException()
         {
-            int[] array = null;
+            List<int> array = null;
 
             Assert.That(() => algorithm.Shuffle(array), Throws.ArgumentNullException);
         }
@@ -30,14 +30,14 @@ namespace RandomNumberListGenerator.UnitTests
         [Test]
         public void Shuffle_ValidArrayProvided_ReturnsUniqueArrayList()
         {
-            int[] array1 = new int[] {1, 2, 3, 4, 5};
-            int[] array2 = new int[] {1, 2, 3, 4, 5};
+            List<int> list1 = new List<int> {1, 2, 3, 4, 5};
+            List<int> list2 = new List<int> {1, 2, 3, 4, 5};
 
-            algorithm.Shuffle(array1);
-            algorithm.Shuffle(array2);
+            algorithm.Shuffle(list1);
+            algorithm.Shuffle(list2);
 
-            Assert.That(array1.Length, Is.EqualTo(array2.Length));
-            Assert.IsFalse(array1.SequenceEqual(array2));
+            Assert.That(list1.Count, Is.EqualTo(list2.Count));
+            Assert.IsFalse(list1.SequenceEqual(list2));
         }
     }
 }
