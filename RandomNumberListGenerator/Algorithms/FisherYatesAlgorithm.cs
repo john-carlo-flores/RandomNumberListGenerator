@@ -14,6 +14,9 @@ namespace RandomNumberListGenerator.Algorithms
          */
         public void Shuffle(T[] array)
         {
+            if (array == null)
+                throw new ArgumentNullException("array");
+
             var rng = new Random();
 
             int n = array.Length;
